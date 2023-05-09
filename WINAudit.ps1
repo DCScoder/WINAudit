@@ -1,7 +1,7 @@
 ###################################################################################
 #
 #    Script:    WINAudit.ps1
-#    Version:   1.0
+#    Version:   1.1
 #    Author:    Dan Saunders
 #    Contact:   dcscoder@gmail.com
 #    Purpose:   Windows Security Configuration Audit Script (PowerShell)
@@ -23,7 +23,7 @@
 ###################################################################################
 
 $Script = "WINAudit_"
-$Version = "v1.0"
+$Version = "v1.1"
 
 ########## Startup ##########
 
@@ -918,7 +918,7 @@ if (Test-RegistryValue $RDPMaxIdleTimeKey $RDPMaxIdleTimeValue)
 Write-Output "`nCheck: Remote Desktop Max Disconnection Time" >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 $RDPMaxDisconnectTimeKey = "HKLM:\Software\Policies\Microsoft\Windows NT\Terminal Services"
 $RDPMaxDisconnectTimeValue = "MaxDisconnectionTime"
-$RDPMaxDisconnectTimeRecommended = "6000"
+$RDPMaxDisconnectTimeRecommended = "60000"
 $MaxDisconnectOptions = @{
 "Never"="0";"1 Minute"="60000";"5 Minutes"="300000";"10 Minutes"="600000";"15 Minutes"="900000";"30 Minutes"="1800000";"1 Hour"="3600000";"2 Hours"="7200000";
 "3 Hours"="10800000";"6 Hours"="21600000";"8 Hours"="28800000";"12 Hours"="43200000";"16 Hours"="57600000";"18 Hours"="64800000";"1 Day"="86400000";"2 Days"="172800000";
