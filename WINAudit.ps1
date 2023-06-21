@@ -1,7 +1,7 @@
 ###################################################################################
 #
 #    Script:    WINAudit.ps1
-#    Version:   1.1
+#    Version:   1.2
 #    Author:    Dan Saunders
 #    Contact:   dcscoder@gmail.com
 #    Purpose:   Windows Security Configuration Audit Script (PowerShell)
@@ -23,7 +23,7 @@
 ###################################################################################
 
 $Script = "WINAudit_"
-$Version = "v1.1"
+$Version = "v1.2"
 
 ########## Startup ##########
 
@@ -338,12 +338,12 @@ if (Test-RegistryValue $SafeDLLKey $SafeDLLValue)
 	if ($SafeDLLData -Eq "1") {
 		Write-Output "Information: Safe DLL Search Mode '$SafeDLLValue' is set to '1'. Safe DLL Search Mode is enabled." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}
 	elseif ($SafeDLLData -Eq "0") { 
-		Write-Output "Finding: Safe DLL Search Mode '$SafeDLLValue' is set to '0'. Safe DLL Search Mode is disabled. `nBackground: Threat actors may insert unauthorised DLL binaries into an applications working directoryfor malicious execution. `nRecommendation: Set registry key '$SafeDLLKey' value '$SafeDLLValue' to '$SafeDLLRecommended', to ensure %systemroot% is searched for the DLL prior to current or other working directories, reducing the Finding of malicious DLL execution." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+		Write-Output "Finding: Safe DLL Search Mode '$SafeDLLValue' is set to '0'. Safe DLL Search Mode is disabled. `nBackground: Threat actors may insert unauthorised DLL binaries into an applications working directoryfor malicious execution. `nRecommendation: Set registry key '$SafeDLLKey' value '$SafeDLLValue' to '$SafeDLLRecommended', to ensure %systemroot% is searched for the DLL prior to current or other working directories, reducing the risk of malicious DLL execution." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 }
     else
 {
-    Write-Output "Finding: Safe DLL Search Mode '$SafeDLLValue' does not exist, therefore Safe DLL Search Mode is disabled. `nBackground: Threat actors may insert unauthorised DLL binaries into an applications working directoryfor malicious execution. `nRecommendation: Set registry key '$SafeDLLKey' value '$SafeDLLValue' to '$SafeDLLRecommended', to ensure %systemroot% is searched for the DLL prior to current or other working directories, reducing the Finding of malicious DLL execution." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+    Write-Output "Finding: Safe DLL Search Mode '$SafeDLLValue' does not exist, therefore Safe DLL Search Mode is disabled. `nBackground: Threat actors may insert unauthorised DLL binaries into an applications working directoryfor malicious execution. `nRecommendation: Set registry key '$SafeDLLKey' value '$SafeDLLValue' to '$SafeDLLRecommended', to ensure %systemroot% is searched for the DLL prior to current or other working directories, reducing the risk of malicious DLL execution." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 
 # Remote Host Credential Delegation
@@ -783,11 +783,11 @@ if (Test-RegistryValue $PSTranscriptLogKey $PSTranscriptLogValue)
 		# Fetch Output Directory
 		Get-ItemProperty -Path $PSTranscriptLogKey -Name $PSTranscriptLogDirValue | Select-Object -ExpandProperty OutputDirectory -ea SilentlyContinue | Out-File $Destination\$Audit\RawData\PowerShell_Transcription_Logging_Path.txt}}
 	elseif ($PSTranscriptLogData -Eq "0") { 
-		Write-Output "Finding: PowerShell Transcription Logging '$PSTranscriptLogValue' is set to '0'. PowerShell Transcription Logging is disabled.`nBackground: PowerShell Transcription Logging auditing is not configured by default, therefore this limits visibility and investigation opportunities. `nRecommendation: Set registry key '$PSTranscriptLogKey' value '$PSTranscriptLogValue' to '$PSTranscriptLogRecommended' and ensure not to enable Invocation, finally store logs in a suitable directory path. Collect and investigate logs in the event of a incident involving PowerShell." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+		Write-Output "Finding: PowerShell Transcription Logging '$PSTranscriptLogValue' is set to '0'. PowerShell Transcription Logging is disabled.`nBackground: PowerShell Transcription Logging auditing is not configured by default, therefore this limits visibility and investigation opportunities. `nRecommendation: Set registry key '$PSTranscriptLogKey' value '$PSTranscriptLogValue' to '$PSTranscriptLogRecommended' and ensure not to enable Invocation, finally store logs in a suitable directory path. Collect and investigate logs in the event of an incident involving PowerShell." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
     else
 {
-    Write-Output "Finding: PowerShell Transcription Logging '$PSTranscriptLogValue' does not exist, therefore PowerShell Transcription Logging is disabled.`nBackground: PowerShell Transcription Logging auditing is not configured by default, therefore this limits visibility and investigation opportunities. `nRecommendation: Set registry key '$PSTranscriptLogKey' value '$PSTranscriptLogValue' to '$PSTranscriptLogRecommended' and store logs in a suitable directory path. Collect and investigate logs in the event of a incident involving PowerShell." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+    Write-Output "Finding: PowerShell Transcription Logging '$PSTranscriptLogValue' does not exist, therefore PowerShell Transcription Logging is disabled.`nBackground: PowerShell Transcription Logging auditing is not configured by default, therefore this limits visibility and investigation opportunities. `nRecommendation: Set registry key '$PSTranscriptLogKey' value '$PSTranscriptLogValue' to '$PSTranscriptLogRecommended' and store logs in a suitable directory path. Collect and investigate logs in the event of an incident involving PowerShell." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 
 # PowerShell Transcription Logging Invocation
