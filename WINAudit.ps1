@@ -1,7 +1,7 @@
 ###################################################################################
 #
 #    Script:    WINAudit.ps1
-#    Version:   1.4
+#    Version:   1.4.1
 #    Author:    Dan Saunders
 #    Contact:   dcscoder@gmail.com
 #    Purpose:   Windows Security Configuration Audit Script (PowerShell)
@@ -23,7 +23,7 @@
 ###################################################################################
 
 $Script = "WINAudit_"
-$Version = "v1.4"
+$Version = "v1.4.1"
 
 ########## Startup ##########
 
@@ -398,7 +398,7 @@ if (Test-RegistryValue $RestrictAnonKey $RestrictAnonValue)
 }
     else
 {
-    Write-Output "Finding: Restrict Anonymous Enumeration '$RestrictAnonValue' does not exist, therefore anonymous logon users (null session connections) is enabled. `nBackground: Threat actors may attempt to list account names and enumeration all shared resources including shares. `nRecommendation: Set registry key '$RestrictAnonKey' value '$RestrictAnonValue' to '$RestrictAnonRecommended', to prevent anonyomous logon user sessions and subsequent enumeration." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}
+    Write-Output "Finding: Restrict Anonymous Enumeration '$RestrictAnonValue' does not exist, therefore anonymous logon users (null session connections) is enabled. `nBackground: Threat actors may attempt to list account names and enumeration all shared resources including shares. `nRecommendation: Set registry key '$RestrictAnonKey' value '$RestrictAnonValue' to '$RestrictAnonRecommended', to prevent anonyomous logon user sessions and subsequent enumeration." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 
 # Anonymous SAM Enumeration 
