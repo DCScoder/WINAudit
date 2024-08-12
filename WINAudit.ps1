@@ -1,7 +1,7 @@
 ###################################################################################
 #
 #    Script:    WINAudit.ps1
-#    Version:   1.3
+#    Version:   1.4
 #    Author:    Dan Saunders
 #    Contact:   dcscoder@gmail.com
 #    Purpose:   Windows Security Configuration Audit Script (PowerShell)
@@ -23,7 +23,7 @@
 ###################################################################################
 
 $Script = "WINAudit_"
-$Version = "v1.3"
+$Version = "v1.4"
 
 ########## Startup ##########
 
@@ -416,7 +416,7 @@ if (Test-RegistryValue $RestrictAnonSAMKey $RestrictAnonSAMValue)
 }
     else
 {
-    Write-Output "Finding: Restrict Anonymous SAM Enumeration '$RestrictAnonSAMValue' does not exist, therefore anonymous logon users (null session connections) for SAM enumeration is enabled. `nBackground: Threat actors may attempt to list SAM account names. `nRecommendation: Set registry key '$RestrictAnonSAMKey' value '$RestrictAnonSAMValue' to '$RestrictAnonSAMRecommended', to prevent anonyomous logon user sessions enumerating SAM accounts." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}
+    Write-Output "Finding: Restrict Anonymous SAM Enumeration '$RestrictAnonSAMValue' does not exist, therefore anonymous logon users (null session connections) for SAM enumeration is enabled. `nBackground: Threat actors may attempt to list SAM account names. `nRecommendation: Set registry key '$RestrictAnonSAMKey' value '$RestrictAnonSAMValue' to '$RestrictAnonSAMRecommended', to prevent anonyomous logon user sessions enumerating SAM accounts." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 
 # Link Local Multicast Name Resolution (LLMNR)
