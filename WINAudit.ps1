@@ -1,7 +1,7 @@
 ###################################################################################
 #
 #    Script:    WINAudit.ps1
-#    Version:   1.2
+#    Version:   1.3
 #    Author:    Dan Saunders
 #    Contact:   dcscoder@gmail.com
 #    Purpose:   Windows Security Configuration Audit Script (PowerShell)
@@ -23,7 +23,7 @@
 ###################################################################################
 
 $Script = "WINAudit_"
-$Version = "v1.2"
+$Version = "v1.3"
 
 ########## Startup ##########
 
