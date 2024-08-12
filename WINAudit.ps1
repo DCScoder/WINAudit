@@ -398,7 +398,7 @@ if (Test-RegistryValue $RestrictAnonKey $RestrictAnonValue)
 }
     else
 {
-    Write-Output "Finding: Restrict Anonymous Enumeration '$RestrictAnonValue' does not exist, therefore anonymous logon users (null session connections) is enabled. `nBackground: Threat actors may attempt to list account names and enumeration all shared resources including shares. `nRecommendation: Set registry key '$RestrictAnonKey' value '$RestrictAnonValue' to '$RestrictAnonRecommended', to prevent anonyomous logon user sessions and subsequent enumeration." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+    Write-Output "Finding: Restrict Anonymous Enumeration '$RestrictAnonValue' does not exist, therefore anonymous logon users (null session connections) is enabled. `nBackground: Threat actors may attempt to list account names and enumeration all shared resources including shares. `nRecommendation: Set registry key '$RestrictAnonKey' value '$RestrictAnonValue' to '$RestrictAnonRecommended', to prevent anonyomous logon user sessions and subsequent enumeration." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}
 }
 
 # Anonymous SAM Enumeration 
@@ -416,7 +416,7 @@ if (Test-RegistryValue $RestrictAnonSAMKey $RestrictAnonSAMValue)
 }
     else
 {
-    Write-Output "Finding: Restrict Anonymous SAM Enumeration '$RestrictAnonSAMValue' does not exist, therefore anonymous logon users (null session connections) for SAM enumeration is enabled. `nBackground: Threat actors may attempt to list SAM account names. `nRecommendation: Set registry key '$RestrictAnonSAMKey' value '$RestrictAnonSAMValue' to '$RestrictAnonSAMRecommended', to prevent anonyomous logon user sessions enumerating SAM accounts." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+    Write-Output "Finding: Restrict Anonymous SAM Enumeration '$RestrictAnonSAMValue' does not exist, therefore anonymous logon users (null session connections) for SAM enumeration is enabled. `nBackground: Threat actors may attempt to list SAM account names. `nRecommendation: Set registry key '$RestrictAnonSAMKey' value '$RestrictAnonSAMValue' to '$RestrictAnonSAMRecommended', to prevent anonyomous logon user sessions enumerating SAM accounts." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}
 }
 
 # Link Local Multicast Name Resolution (LLMNR)
@@ -435,7 +435,7 @@ if (Test-RegistryValue $LLMNRKey $LLMNRValue)
 }
     else
 {
-    Write-Output "Information: Link Local Multicast Name Resolution (LLMNR) '$LLMNRValue' does not exist, therefore LLMNR is enabled. `nBackground: Threat actors may attempt Man-In-The-Middle attacks to harvest credentials, due to insecure LLMNR protocols. This is achieved by impersonating a system when LLMNR sends a resolution query, resulting in LLMNR sending credentials. `nRecommendation: Set registry key '$LLMNRKey' value '$LLMNRValue' to '$LLMNRRecommended', to prevent LLMNR abuse." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt}" >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
+    Write-Output "Information: Link Local Multicast Name Resolution (LLMNR) '$LLMNRValue' does not exist, therefore LLMNR is enabled. `nBackground: Threat actors may attempt Man-In-The-Middle attacks to harvest credentials, due to insecure LLMNR protocols. This is achieved by impersonating a system when LLMNR sends a resolution query, resulting in LLMNR sending credentials. `nRecommendation: Set registry key '$LLMNRKey' value '$LLMNRValue' to '$LLMNRRecommended', to prevent LLMNR abuse." >> $Destination\$Audit\WINAudit_Security_Configuration_Report.txt
 }
 
 # NetBIOS Name Service (NBT-NS)
